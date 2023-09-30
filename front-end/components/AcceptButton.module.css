@@ -1,0 +1,17 @@
+.accept {
+  position: absolute;
+  top: 12px;
+  left: 154px;
+  text-transform: capitalize;
+  font-weight: 200;
+}
+.acceptButton {
+  background-color: #a0eec0;
+  width: 398px;
+  height: 60px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 30px;
+  color: #000;
+  font-family: Inter;
+}

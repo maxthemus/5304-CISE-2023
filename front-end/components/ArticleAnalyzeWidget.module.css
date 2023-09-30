@@ -1,0 +1,17 @@
+.articlesToAnalyze {
+  position: absolute;
+  top: 13px;
+  left: 117px;
+  text-transform: capitalize;
+  font-weight: 200;
+}
+.articleAnalyzeWidget {
+  background-color: #86cd82;
+  width: 452px;
+  height: 808px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 25px;
+  color: #fff;
+  font-family: Inter;
+}

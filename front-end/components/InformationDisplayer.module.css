@@ -1,0 +1,21 @@
+.operatingSystemConcepts {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  text-transform: capitalize;
+  font-weight: 200;
+  display: flex;
+  align-items: center;
+  width: 681px;
+}
+.informationDisplayer {
+  background-color: #72a276;
+  width: 743px;
+  height: 40px;
+  overflow: hidden;
+  mix-blend-mode: normal;
+  text-align: left;
+  font-size: 25px;
+  color: #fff;
+  font-family: Inter;
+}
