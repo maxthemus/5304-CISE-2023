@@ -1,0 +1,15 @@
+.speed {
+  position: absolute;
+  top: 11px;
+  left: 46px;
+}
+.speedLogo {
+  background-color: #72a276;
+  width: 141px;
+  height: 40px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 15px;
+  color: #8ae9c1;
+  font-family: Inter;
+}

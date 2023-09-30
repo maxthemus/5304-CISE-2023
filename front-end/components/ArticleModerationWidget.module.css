@@ -1,0 +1,17 @@
+.articlesToModerate {
+  position: absolute;
+  top: 13px;
+  left: 106px;
+  text-transform: capitalize;
+  font-weight: 200;
+}
+.articleModerationWidget {
+  background-color: #86cd82;
+  width: 452px;
+  height: 808px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 25px;
+  color: #fff;
+  font-family: Inter;
+}
