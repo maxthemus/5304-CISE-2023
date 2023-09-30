@@ -1,0 +1,91 @@
+.frame {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: transparent;
+}
+.articleName {
+  position: absolute;
+  width: 37.31%;
+  top: 20%;
+  left: 31.39%;
+  text-transform: capitalize;
+  font-weight: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.viewColumnName {
+  height: 100%;
+  width: 45.67%;
+  top: 0;
+  right: 54.33%;
+  bottom: 0;
+  left: 0;
+}
+.author,
+.frame1,
+.viewColumnName {
+  position: absolute;
+}
+.frame1 {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(44, 155, 128, 0.5);
+}
+.author {
+  width: 41.91%;
+  top: 20%;
+  left: 29.13%;
+  text-transform: capitalize;
+  font-weight: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.viewColumnAuthor {
+  position: absolute;
+  height: 100%;
+  width: 34.33%;
+  top: 0;
+  right: 20%;
+  bottom: 0;
+  left: 45.67%;
+}
+.publishedDate {
+  position: absolute;
+  width: 85%;
+  top: 20%;
+  left: 7.5%;
+  text-transform: capitalize;
+  font-weight: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.viewColumnPublisheddate {
+  position: absolute;
+  height: 100%;
+  width: 20%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 80%;
+}
+.searchTableHeader {
+  background-color: #86cd82;
+  width: 1200px;
+  height: 50px;
+  text-align: center;
+  font-size: 25px;
+  color: #000;
+  font-family: Inter;
+}

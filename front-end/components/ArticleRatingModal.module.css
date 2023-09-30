@@ -1,0 +1,26 @@
+.rateArticle {
+  position: relative;
+  text-transform: capitalize;
+  font-weight: 200;
+}
+.ratingFrameIcon {
+  position: relative;
+  width: 624.5px;
+  height: 80px;
+}
+.articleRatingModal {
+  background-color: rgba(134, 205, 130, 0.5);
+  width: 785px;
+  height: 130px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 100px;
+  box-sizing: border-box;
+  text-align: left;
+  font-size: 30px;
+  color: #000;
+  font-family: Inter;
+}

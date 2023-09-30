@@ -1,0 +1,40 @@
+.addArticleForm {
+  position: absolute;
+  top: 95px;
+  left: 346px;
+  width: 708px;
+  height: 729px;
+  overflow: hidden;
+}
+.add,
+.addArticle {
+  position: absolute;
+  top: 17px;
+  left: 573px;
+  text-transform: capitalize;
+  font-weight: 200;
+}
+.add {
+  top: 16px;
+  left: 319px;
+}
+.submitButton {
+  position: absolute;
+  top: 743px;
+  left: 343px;
+  background-color: #86cd82;
+  width: 711px;
+  height: 80px;
+  overflow: hidden;
+  font-size: 40px;
+}
+.addArticleModal {
+  background-color: #72a276;
+  width: 1400px;
+  height: 863px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 50px;
+  color: #fff;
+  font-family: Inter;
+}

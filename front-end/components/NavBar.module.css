@@ -1,0 +1,27 @@
+.addArticle {
+  position: absolute;
+  top: 8px;
+  left: 24px;
+  text-transform: capitalize;
+  font-weight: 200;
+}
+.addButton {
+  position: absolute;
+  top: 5px;
+  left: 1405px;
+  background-color: #72a276;
+  width: 150px;
+  height: 40px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.navbar {
+  background-color: #d9d9d9;
+  width: 1600px;
+  height: 50px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 20px;
+  color: #fff;
+  font-family: Inter;
+}

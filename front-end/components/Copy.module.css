@@ -1,0 +1,28 @@
+.copyChild,
+.copyItem {
+  position: absolute;
+  height: 50%;
+  width: 50%;
+  border-radius: 2px;
+}
+.copyChild {
+  top: 12.5%;
+  right: 37.5%;
+  bottom: 37.5%;
+  left: 12.5%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.copyItem {
+  top: 37.5%;
+  right: 12.5%;
+  bottom: 12.5%;
+  left: 37.5%;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+}
+.copy {
+  width: 24px;
+  height: 24px;
+}

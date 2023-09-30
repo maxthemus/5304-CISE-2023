@@ -1,0 +1,9 @@
+.navButtons {
+  background-color: transparent;
+  width: 480px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}

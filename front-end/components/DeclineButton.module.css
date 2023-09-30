@@ -1,0 +1,17 @@
+.decline {
+  position: absolute;
+  top: 12px;
+  left: 151px;
+  text-transform: capitalize;
+  font-weight: 200;
+}
+.declineButton {
+  background-color: #eea0a0;
+  width: 398px;
+  height: 60px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 30px;
+  color: #000;
+  font-family: Inter;
+}
