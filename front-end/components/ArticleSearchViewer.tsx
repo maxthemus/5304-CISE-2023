@@ -50,12 +50,10 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
     fetch(apiUrl, {
       method: "GET",
       mode: "cors",
-      credentials: "same-origin",
       headers: {
-        "Content-Type": "application/json",
-      },
-      redirect: "follow",
-      referrerPolicy: "no-referrer"
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': "*"
+      }
     }).then((response) => {
       if(!response) { 
         throw new Error("Error collecting data");
