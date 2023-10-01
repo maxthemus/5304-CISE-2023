@@ -7,8 +7,9 @@ import { ValidationPipe } from '@nestjs/common';
 //dotenv.config(); // Load environment variables from .env file
 
 async function bootstrap() {
-  const port = 3000; 
+  const port = 3001; 
   const app = await NestFactory.create(AppModule);
+  app.enableCors();
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(port);
 }

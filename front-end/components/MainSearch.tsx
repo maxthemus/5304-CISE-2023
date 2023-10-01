@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { useMemo, type CSSProperties } from "react";
+import { useMemo, type CSSProperties, useState } from "react";
 import SearchHeaderContainer from "./SearchHeaderContainer";
 import ArticleSearchViewer from "./ArticleSearchViewer";
 import styles from "./MainSearch.module.css";
@@ -27,13 +27,20 @@ const MainSearch: NextPage<MainSearchType> = ({
     };
   }, [mainSearchPosition, mainSearchTop, mainSearchLeft]);
 
+  const [searchFilter, setSearchFilter] = useState<string>("");
+
+  const updateFilter = (value: string) => {
+    setSearchFilter(value);
+  };
+
   return (
     <div className={styles.mainSearch} style={mainSearchStyle}>
-      <SearchHeaderContainer imageDimensions="/searchbar2.svg" />
+      <SearchHeaderContainer imageDimensions="/searchbar2.svg" updateFilter={updateFilter} />
       <ArticleSearchViewer
         articleSearchViewerPosition="absolute"
         articleSearchViewerTop="233px"
         articleSearchViewerLeft="100px"
+        filterValue={searchFilter}
       />
     </div>
   );
