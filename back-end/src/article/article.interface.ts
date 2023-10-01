@@ -5,4 +5,5 @@ export interface IArticle extends Document {
     readonly author: string;
     readonly publishDate: string;
     readonly link : string;
+    readonly stage: string;
 }

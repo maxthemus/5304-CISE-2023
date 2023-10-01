@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put, Res } from
 import { CreateArticleDto } from './create-article.dto';
 import { UpdateArticleDto } from './update-article.dto';
 import { ArticleService } from "./article.service";
+import { response } from 'express';
 
 @Controller('article')
 export class ArticleController {
@@ -73,4 +74,29 @@ export class ArticleController {
             return response.status(err.status).json(err.response);
         }
     }
+
+    @Get("/stage/:stage")
+    async getArticlesOfStage(@Res() response, @Param("stage") stage: string) {
+        //First we check to see if the stage is a vaid stage
+        if(stage == "moderation" || stage == "analyze" || stage == "done") {
+            const articleData = await this.articleService.getAllArticles();
+
+            const outputArticles = articleData.filter((article) => {
+                return (article.stage === stage);
+            });
+
+            return response.status(HttpStatus.OK).json({
+                message: "Valid request",
+                outputArticles
+            });
+        } else {
+            return response.status(HttpStatus.BAD_REQUEST).json({
+                statusCode: 400, 
+                message: "Error getting article type article",
+                error: "Bad request"
+            });     
+        }
+    }
+
+
 }

@@ -14,7 +14,8 @@ export class Article {
     @Prop()
     link: string;
 
-
+    @Prop()
+    stage: string; //can be "[moderation, analyze, done]"
 }
 
 export const ArticleSchema = SchemaFactory.createForClass(Article);

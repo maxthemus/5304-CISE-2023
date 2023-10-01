@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsString, MaxLength } from "class-validator";
+import { IsNotEmpty, IsNumber, IsString, MAX, MaxLength, isString } from "class-validator";
 
 export class CreateArticleDto {
     @IsString()
@@ -20,4 +20,9 @@ export class CreateArticleDto {
     @MaxLength(30)
     @IsNotEmpty()
     readonly link: string;
+
+    @IsString()
+    @MaxLength(30)
+    @IsNotEmpty()
+    readonly stage: string;
 }
