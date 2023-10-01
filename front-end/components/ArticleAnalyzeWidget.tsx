@@ -44,6 +44,7 @@ const ArticleAnalyzeWidget: NextPage<ArticleAnalyzeWidgetType> = ({
         sizeSmallIconPosition="absolute"
         sizeSmallIconTop="55px"
         sizeSmallIconLeft="76px"
+        updateFilter={() => {}}
       />
       <ArticleModerationViewer
         articleModerationViewerPosition="absolute"

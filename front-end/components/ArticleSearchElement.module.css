@@ -1,0 +1,70 @@
+.dateBox,
+.div {
+  position: absolute;
+}
+.div {
+  top: 45px;
+  left: 50px;
+  font-size: 25px;
+  text-transform: capitalize;
+  font-weight: 200;
+  font-family: Inter;
+  color: #000;
+  text-align: left;
+}
+.dateBox {
+  top: 0;
+  left: 960px;
+  width: 240px;
+  height: 120px;
+  overflow: hidden;
+}
+.peterBaerGalvin {
+  position: absolute;
+  top: 45px;
+  left: 20px;
+  font-size: 25px;
+  text-transform: capitalize;
+  font-weight: 200;
+  font-family: Inter;
+  color: #000;
+  text-align: left;
+}
+.authorBox {
+  position: absolute;
+  top: 0;
+  left: 548px;
+  background-color: rgba(44, 155, 128, 0.5);
+  width: 412px;
+  height: 120px;
+  overflow: hidden;
+}
+.operatingSystemConcepts {
+  position: absolute;
+  top: 45px;
+  left: 18px;
+  font-size: 25px;
+  text-transform: capitalize;
+  font-weight: 200;
+  font-family: Inter;
+  color: #000;
+  text-align: left;
+}
+.nameBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 548px;
+  height: 120px;
+  overflow: hidden;
+}
+.articleSearchElement {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: #86cd82;
+  width: 1200px;
+  height: 120px;
+  overflow: hidden;
+  position: relative;
+}
