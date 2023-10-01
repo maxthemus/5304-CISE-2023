@@ -2,7 +2,6 @@ import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put, Res } from
 import { CreateArticleDto } from './create-article.dto';
 import { UpdateArticleDto } from './update-article.dto';
 import { ArticleService } from "./article.service";
-import { response } from 'express';
 
 @Controller('article')
 export class ArticleController {
