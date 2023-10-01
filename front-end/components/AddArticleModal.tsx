@@ -1,6 +1,15 @@
 import type { NextPage } from "next";
 import { useMemo, type CSSProperties } from "react";
 import styles from "./AddArticleModal.module.css";
+import { useState } from "react";
+
+interface FormData {
+  name: string;
+  author: string;
+  publishDate: string;
+  link: string;
+}
+
 
 type AddArticleModalType = {
   /** Style props */
@@ -14,6 +23,8 @@ const AddArticleModal: NextPage<AddArticleModalType> = ({
   addArticleModalTop,
   addArticleModalLeft,
 }) => {
+  const api_path = process.env.NEXT_PUBLIC_API_URL;  
+
   const addArticleModalStyle: CSSProperties = useMemo(() => {
     return {
       position: addArticleModalPosition,
@@ -22,11 +33,80 @@ const AddArticleModal: NextPage<AddArticleModalType> = ({
     };
   }, [addArticleModalPosition, addArticleModalTop, addArticleModalLeft]);
 
+ const [formData, setFormData] = useState<FormData>({
+    name: '',
+    author: '',
+    publishDate: '',
+    link: 'n/a'
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Form data submitted:', formData);
+
+    try {
+      console.log(api_path);
+    } catch(error) {
+      console.log(error);
+    }
+  };
+
+
   return (
     <div className={styles.addArticleModal} style={addArticleModalStyle}>
-      <div className={styles.addArticleForm} />
+      <div className={styles.addArticleForm} >
+      <div>
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="author">Author:</label>
+          <input
+            type="author"
+            id="author"
+            name="author"
+            value={formData.author}
+            onChange={handleChange}
+          />
+        </div> 
+
+        <div>
+          <label htmlFor="publishDate">Publish Date:</label>
+          <input
+            type="text"
+            id="publishDate"
+            name="publishDate"
+            value={formData.publishDate}
+            onChange={handleChange}
+          />
+        </div> 
+
+        <div>
+          <label htmlFor="link">Link:</label>
+          <input
+            type="text"
+            id="link"
+            name="link"
+            value={formData.link}
+            onChange={handleChange}
+          />
+        </div> 
+      </div>
       <div className={styles.addArticle}>Add Article</div>
-      <div className={styles.submitButton}>
+
+      <div onClick={handleSubmit}className={styles.submitButton}>
         <div className={styles.add}>Add</div>
       </div>
     </div>
