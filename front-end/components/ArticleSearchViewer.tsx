@@ -9,6 +9,7 @@ type ArticleSearchViewerType = {
   articleSearchViewerPosition?: CSSProperties["position"];
   articleSearchViewerTop?: CSSProperties["top"];
   articleSearchViewerLeft?: CSSProperties["left"];
+  filterValue: string;
 };
 
 interface Article {
@@ -23,6 +24,7 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
   articleSearchViewerPosition,
   articleSearchViewerTop,
   articleSearchViewerLeft,
+  filterValue
 }) => {
   const api_path = process.env.NEXT_PUBLIC_API_URL;
   const [articles, setArticles] = useState<Article[]>([]);
@@ -60,9 +62,13 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
 
   const mapDisplayArticles = () => {
     return(
-      articles.map((value, index) => ( 
-          <ArticleSearchElement articleName={value.name} author={value.author} publishDate={value.publishDate} key={index} />
-      ))
+      articles.map((value, index) => {
+          if(value.name.startsWith(filterValue)) {
+            return (<ArticleSearchElement articleName={value.name} author={value.author} publishDate={value.publishDate} key={index} />);
+          } else {
+            return null;
+          }
+      })
     );
   };
 
