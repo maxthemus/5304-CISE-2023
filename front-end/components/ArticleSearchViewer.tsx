@@ -45,7 +45,10 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
   useEffect(() => {
     //Sends get requst to get all done articles  
     const apiUrl = api_path + "/article/stage/done";
-    fetch(apiUrl).then((response) => {
+    fetch(apiUrl, {
+      method: "GET",
+      mode: 'no-cors',      
+    }).then((response) => {
       if(!response) { 
         throw new Error("Error collecting data");
       } else {
