@@ -37,7 +37,7 @@ const AddArticleModal: NextPage<AddArticleModalType> = ({
     name: '',
     author: '',
     publishDate: '',
-    link: 'n/a'
+    link: 'n/a',
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,12 +45,27 @@ const AddArticleModal: NextPage<AddArticleModalType> = ({
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form data submitted:', formData);
 
     try {
       console.log(api_path);
+      const apiUrl = api_path + "/article/";
+      const requestOptions = {
+        method: 'POST',
+        headers: {
+          'Content-Type': "application/json",
+        },
+        body: JSON.stringify({...formData, stage: "moderation"})
+      };
+
+      const response = await fetch(apiUrl, requestOptions);
+      if(!response) {
+        alert("Couldn't send request to server");
+      } else {
+        alert("Article Added");
+      }
     } catch(error) {
       console.log(error);
     }
