@@ -46,7 +46,6 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
   useEffect(() => {
     //Sends get requst to get all done articles  
     const apiUrl = api_path + "/article/stage/done";
-    axios.get(apiUrl)
     fetch(apiUrl, {
       method: "GET",
       mode: "cors",
