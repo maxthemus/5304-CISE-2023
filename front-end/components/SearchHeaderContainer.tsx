@@ -10,7 +10,7 @@ type SearchHeaderContainerType = {
 
 const SearchHeaderContainer: NextPage<SearchHeaderContainerType> = ({
   imageDimensions,
-  updateFilter
+  updateFilter=(() => {})
 }) => {
   return (
     <div className={styles.searchHeader}>
