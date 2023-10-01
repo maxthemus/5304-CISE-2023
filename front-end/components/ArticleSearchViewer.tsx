@@ -3,6 +3,7 @@ import { useMemo, type CSSProperties, useEffect, useState } from "react";
 import SearchTableHeader from "./SearchTableHeader";
 import styles from "./ArticleSearchViewer.module.css";
 import ArticleSearchElement from "./ArticleSearchElement";
+import axios from "axios";
 
 type ArticleSearchViewerType = {
   /** Style props */
@@ -45,9 +46,16 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
   useEffect(() => {
     //Sends get requst to get all done articles  
     const apiUrl = api_path + "/article/stage/done";
+    axios.get(apiUrl)
     fetch(apiUrl, {
       method: "GET",
-      mode: 'no-cors',      
+      mode: "cors",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      redirect: "follow",
+      referrerPolicy: "no-referrer"
     }).then((response) => {
       if(!response) { 
         throw new Error("Error collecting data");
@@ -55,6 +63,7 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
         return response.json();
       }
     }).then((data) => {
+      console.log(data);
       setArticles(data.outputArticles);
       console.log(data);
     }).catch((err) => {
