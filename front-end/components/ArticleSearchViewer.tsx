@@ -84,15 +84,15 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
       articles.map((value, index) => {
         if (value.name.startsWith(filterValue)) {
           return (
-            <div onClick={() => handleViewArticle(value)}>
-              <ArticleSearchElement articleName={value.name} author={value.author} publishDate={value.publishDate} key={index} />
+            <div key={index} onClick={() => handleViewArticle(value)}>
+              <ArticleSearchElement articleName={value.name} author={value.author} publishDate={value.publishDate}/>
             </div>);
         } else {
           return null;
         }
       })
     );
-  };
+  }
 
 
   return (
