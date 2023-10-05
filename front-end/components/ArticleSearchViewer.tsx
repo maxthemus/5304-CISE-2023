@@ -4,6 +4,9 @@ import SearchTableHeader from "./SearchTableHeader";
 import styles from "./ArticleSearchViewer.module.css";
 import ArticleSearchElement from "./ArticleSearchElement";
 import axios from "axios";
+import { useRouter } from "next/router";
+import { useCallback } from "react";
+
 
 type ArticleSearchViewerType = {
   /** Style props */
@@ -69,11 +72,21 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
     });
   }, []);
 
+  const router = useRouter();
+
+  const handleViewArticle = (article: Article) => {
+    console.log("HELLO WORLD");
+      router.push("/ArticleScreen");
+  };
+
   const mapDisplayArticles = () => {
     return(
       articles.map((value, index) => {
           if(value.name.startsWith(filterValue)) {
-            return (<ArticleSearchElement articleName={value.name} author={value.author} publishDate={value.publishDate} key={index} />);
+            return (
+            <div onClick={() => handleViewArticle(value)}>
+              <ArticleSearchElement articleName={value.name} author={value.author} publishDate={value.publishDate} key={index} />
+            </div>);
           } else {
             return null;
           }
