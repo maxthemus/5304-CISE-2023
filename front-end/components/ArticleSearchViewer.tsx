@@ -57,7 +57,7 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
         'Access-Control-Allow-Origin': "*"
       }
     }).then((response) => {
-      if(!response) { 
+      if (!response) {
         throw new Error("Error collecting data");
       } else {
         return response.json();
@@ -76,20 +76,20 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
 
   const handleViewArticle = (article: Article) => {
     console.log("HELLO WORLD");
-      router.push("/ArticleScreen");
+    router.push("/ArticleScreen");
   };
 
   const mapDisplayArticles = () => {
-    return(
+    return (
       articles.map((value, index) => {
-          if(value.name.startsWith(filterValue)) {
-            return (
+        if (value.name.startsWith(filterValue)) {
+          return (
             <div onClick={() => handleViewArticle(value)}>
               <ArticleSearchElement articleName={value.name} author={value.author} publishDate={value.publishDate} key={index} />
             </div>);
-          } else {
-            return null;
-          }
+        } else {
+          return null;
+        }
       })
     );
   };
@@ -105,7 +105,7 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
         searchTableHeaderTop="0px"
         searchTableHeaderLeft="0px"
       />
-      <div style={{display: "flex", flexDirection: "column", height: "500px", gap: "10px", paddingTop: "75px"}}>
+      <div style={{ display: "flex", flexDirection: "column", height: "500px", gap: "10px", paddingTop: "75px" }}>
         {mapDisplayArticles()}
       </div>
     </div>
