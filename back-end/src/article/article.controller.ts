@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put, Res } from
 import { CreateArticleDto } from './create-article.dto';
 import { UpdateArticleDto } from './update-article.dto';
 import { ArticleService } from "./article.service";
+import { HttpAdapterHost } from '@nestjs/core';
 
 @Controller('article')
 export class ArticleController {
@@ -34,7 +35,9 @@ export class ArticleController {
                 existingArticle,
             });
         } catch (err) {
-            return response.status(err.status).json(err.response);
+            return response.status(HttpStatus.BAD_REQUEST).json({
+                error: err.response
+            });
         }
     }
 
@@ -46,19 +49,27 @@ export class ArticleController {
                 message: 'All students data found successfully', articleData,
             });
         } catch (err) {
-            return response.status(err.status).json(err.response);
+            console.log(err);
+            return response.status(HttpStatus.BAD_REQUEST).json({
+                err: err.message
+            });
         }
     }
 
     @Get('/:id')
     async getArticle(@Res() response, @Param('id') articleId: string) {
+        console.log(articleId);
         try {
-            const existingArticle = await
-                this.articleService.getArticle(articleId); return response.status(HttpStatus.OK).json({
-                    message: 'Student found successfully', existingArticle,
+            const existingArticle = await this.articleService.getArticle(articleId); 
+                return response.status(HttpStatus.OK).json({
+                    message: 'Student found successfully', 
+                    existingArticle,
                 });
         } catch (err) {
-            return response.status(err.status).json(err.response);
+            console.log(err);
+            return response.status(HttpStatus.BAD_REQUEST).json({
+                err: err.message
+            });
         }
     }
 
@@ -70,7 +81,9 @@ export class ArticleController {
                 deletedArticle,
             });
         } catch (err) {
-            return response.status(err.status).json(err.response);
+            return response.status(HttpStatus.BAD_REQUEST).json({
+                err:err.response
+            });
         }
     }
 

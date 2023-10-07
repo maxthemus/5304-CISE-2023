@@ -6,6 +6,8 @@ import ArticleSearchElement from "./ArticleSearchElement";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
+import { Article } from "../interfaces/article";
+
 
 
 type ArticleSearchViewerType = {
@@ -16,13 +18,7 @@ type ArticleSearchViewerType = {
   filterValue: string;
 };
 
-interface Article {
-  name: string;
-  author: string;
-  publishDate: string;
-  link: string;
-  stage: string;
-};
+
 
 const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
   articleSearchViewerPosition,
@@ -76,7 +72,12 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
 
   const handleViewArticle = (article: Article) => {
     console.log("HELLO WORLD");
-    router.push("/ArticleScreen");
+    router.push({
+      pathname: "/ArticleScreen",
+      query: {
+        id: article._id
+      }
+    });
   };
 
   const mapDisplayArticles = () => {
