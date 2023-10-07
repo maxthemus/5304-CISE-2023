@@ -39,6 +39,14 @@ const MainAnalyze: NextPage<MainAnalyzeType> = ({
         articleViewerModalPosition="absolute"
         articleViewerModalTop="27px"
         articleViewerModalLeft="528px"
+        article={{
+          name: "...",
+          author: "...",
+          publishDate: "...",
+          link: "...",
+          stage: "...",
+          _id: "..."
+        }}
       />
     </div>
   );

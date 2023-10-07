@@ -6,6 +6,7 @@
   font-weight: 200;
 }
 .stateactive {
+  margin-top: 5px;
   background-color: #72a276;
   width: 452px;
   height: 75px;
