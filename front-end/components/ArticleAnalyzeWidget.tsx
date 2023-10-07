@@ -1,16 +1,22 @@
 import type { NextPage } from "next";
-import { useMemo, type CSSProperties } from "react";
+import { useMemo, type CSSProperties, useState } from "react";
 import SizeSmall from "./SizeSmall";
 import ArticleModerationViewer from "./ArticleModerationViewer";
 import styles from "./ArticleAnalyzeWidget.module.css";
+import { Article } from "../interfaces/article";
 
 type ArticleAnalyzeWidgetType = {
   searchBar?: string;
+
 
   /** Style props */
   articleAnalyzeWidgetPosition?: CSSProperties["position"];
   articleAnalyzeWidgetTop?: CSSProperties["top"];
   articleAnalyzeWidgetLeft?: CSSProperties["left"];
+
+  articles?: Article[];
+  active: number;
+  setActive: Function;
 };
 
 const ArticleAnalyzeWidget: NextPage<ArticleAnalyzeWidgetType> = ({
@@ -18,6 +24,9 @@ const ArticleAnalyzeWidget: NextPage<ArticleAnalyzeWidgetType> = ({
   articleAnalyzeWidgetPosition,
   articleAnalyzeWidgetTop,
   articleAnalyzeWidgetLeft,
+  articles,
+  active,
+  setActive
 }) => {
   const articleAnalyzeWidgetStyle: CSSProperties = useMemo(() => {
     return {
@@ -30,6 +39,7 @@ const ArticleAnalyzeWidget: NextPage<ArticleAnalyzeWidgetType> = ({
     articleAnalyzeWidgetTop,
     articleAnalyzeWidgetLeft,
   ]);
+  const [filter, setFilter] = useState("");
 
   return (
     <div
@@ -44,12 +54,16 @@ const ArticleAnalyzeWidget: NextPage<ArticleAnalyzeWidgetType> = ({
         sizeSmallIconPosition="absolute"
         sizeSmallIconTop="55px"
         sizeSmallIconLeft="76px"
-        updateFilter={() => {}}
+        updateFilter={(value:string) => {setFilter(value)}}
       />
       <ArticleModerationViewer
         articleModerationViewerPosition="absolute"
         articleModerationViewerTop="112px"
         articleModerationViewerLeft="0px"
+        articles={articles}
+        active={active}
+        setActive={setActive}
+        filter={filter}
       />
     </div>
   );
