@@ -3,6 +3,8 @@ import { CreateArticleDto } from './create-article.dto';
 import { UpdateArticleDto } from './update-article.dto';
 import { ArticleService } from "./article.service";
 import { HttpAdapterHost } from '@nestjs/core';
+import { response } from 'express';
+import { updateArticleStageDto } from './update-article-stage.dto';
 
 @Controller('article')
 export class ArticleController {
@@ -26,12 +28,33 @@ export class ArticleController {
         }
     }
 
+    @Post("/moderate")
+    async moderateArticle(@Res() response, @Body() updateObj: updateArticleStageDto) {
+        try {
+                const getArticleInfo = await this.articleService.getArticle(updateObj.id);
+                const updatedArticleDTO:UpdateArticleDto = {
+                    stage: (updateObj.accepted ? "analyze" : "failed"),
+                }                
+
+                const updatedArticle = await this.articleService.updateArticle(updateObj.id, updatedArticleDTO);
+                return response.status(HttpStatus.OK).json({
+                    message: "Article has been moderated",
+                    updatedArticle
+                });
+        } catch(err) {
+            return response.status(HttpStatus.BAD_REQUEST).json({
+                error: "Server error"
+            });
+        }
+    }
+
     @Put('/:id')
     async updateArticle(@Res() response, @Param('id') articleId: string,
         @Body() updateArticleDto: UpdateArticleDto) {
         try {
-            const existingArticle = await this.articleService.updateArticle(articleId, updateArticleDto); return response.status(HttpStatus.OK).json({
-                message: 'Student has been successfully updated',
+            const existingArticle = await this.articleService.updateArticle(articleId, updateArticleDto); 
+            return response.status(HttpStatus.OK).json({
+                message: 'Article has been successfully updated',
                 existingArticle,
             });
         } catch (err) {
