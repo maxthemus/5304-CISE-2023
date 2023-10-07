@@ -1,7 +1,10 @@
 import type { NextPage } from "next";
-import { useMemo, type CSSProperties } from "react";
+import { useMemo, type CSSProperties, useEffect, useState } from "react";
 import InformationDisplayer from "./InformationDisplayer";
 import styles from "./ArticleInfo.module.css";
+
+import { Article } from "../interfaces/article";
+import { useRouter } from 'next/router';
 
 type ArticleInfoType = {
   /** Style props */
@@ -9,6 +12,7 @@ type ArticleInfoType = {
   articleInfoTop?: CSSProperties["top"];
   articleInfoLeft?: CSSProperties["left"];
   articleInfoBackgroundColor?: CSSProperties["backgroundColor"];
+  article: Article;
 };
 
 const ArticleInfo: NextPage<ArticleInfoType> = ({
@@ -16,6 +20,14 @@ const ArticleInfo: NextPage<ArticleInfoType> = ({
   articleInfoTop,
   articleInfoLeft,
   articleInfoBackgroundColor,
+  article={
+    name: "...",
+    author: "...",
+    publishDate: "...",
+    link: "...",
+    stage: "...",
+    _id: "..."
+  }
 }) => {
   const articleInfoStyle: CSSProperties = useMemo(() => {
     return {
@@ -31,13 +43,15 @@ const ArticleInfo: NextPage<ArticleInfoType> = ({
     articleInfoBackgroundColor,
   ]);
 
+ 
+
   return (
     <div className={styles.articleInfo} style={articleInfoStyle}>
       <div className={styles.articleInfoFrame}>
         <div className={styles.articleName}>
           <div className={styles.articlePublishDate}>Article Name:</div>
           <InformationDisplayer
-            text="Operating system Concepts"
+            text={article.name}
             informationDisplayerPosition="absolute"
             informationDisplayerTop="24px"
             informationDisplayerLeft="0px"
@@ -46,7 +60,7 @@ const ArticleInfo: NextPage<ArticleInfoType> = ({
         <div className={styles.articleName}>
           <div className={styles.articlePublishDate}>Article Author:</div>
           <InformationDisplayer
-            text="author"
+            text={article.author}
             informationDisplayerPosition="absolute"
             informationDisplayerTop="24px"
             informationDisplayerLeft="0px"
@@ -55,7 +69,7 @@ const ArticleInfo: NextPage<ArticleInfoType> = ({
         <div className={styles.articleName}>
           <div className={styles.articlePublishDate}>Article Publish Date:</div>
           <InformationDisplayer
-            text="10-04-2002"
+            text={article.publishDate}
             informationDisplayerPosition="absolute"
             informationDisplayerTop="24px"
             informationDisplayerLeft="0px"
@@ -64,7 +78,7 @@ const ArticleInfo: NextPage<ArticleInfoType> = ({
         <div className={styles.articleName}>
           <div className={styles.articlePublishDate}>Article Link:</div>
           <InformationDisplayer
-            text="N/A"
+            text={article.link}
             informationDisplayerPosition="absolute"
             informationDisplayerTop="24px"
             informationDisplayerLeft="0px"

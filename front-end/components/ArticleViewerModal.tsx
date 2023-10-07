@@ -4,18 +4,28 @@ import DeclineButton from "./DeclineButton";
 import AcceptButton from "./AcceptButton";
 import ArticleInfo from "./ArticleInfo";
 import styles from "./ArticleViewerModal.module.css";
+import { Article } from "../interfaces/article";
 
 type ArticleViewerModalType = {
   /** Style props */
   articleViewerModalPosition?: CSSProperties["position"];
   articleViewerModalTop?: CSSProperties["top"];
   articleViewerModalLeft?: CSSProperties["left"];
+  article: Article;
 };
 
 const ArticleViewerModal: NextPage<ArticleViewerModalType> = ({
   articleViewerModalPosition,
   articleViewerModalTop,
   articleViewerModalLeft,
+  article={
+    name: "...",
+    author: "...",
+    publishDate: "...",
+    link: "...",
+    stage: "...",
+    _id: "..."
+  }
 }) => {
   const articleViewerModalStyle: CSSProperties = useMemo(() => {
     return {
@@ -48,6 +58,7 @@ const ArticleViewerModal: NextPage<ArticleViewerModalType> = ({
         articleInfoTop="65px"
         articleInfoLeft="15px"
         articleInfoBackgroundColor="rgba(134, 205, 130, 0)"
+        article={article}
       />
       <div className={styles.articleInformation}>Article Information</div>
     </div>

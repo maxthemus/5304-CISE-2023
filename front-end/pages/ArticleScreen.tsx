@@ -5,6 +5,8 @@ import NavBar from "../components/NavBar";
 import ArticleInfoModal from "../components/ArticleInfoModal";
 import styles from "./ArticleScreen.module.css";
 
+
+
 const ArticleScreen: NextPage = () => {
   const router = useRouter();
 

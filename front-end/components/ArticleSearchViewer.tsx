@@ -4,6 +4,11 @@ import SearchTableHeader from "./SearchTableHeader";
 import styles from "./ArticleSearchViewer.module.css";
 import ArticleSearchElement from "./ArticleSearchElement";
 import axios from "axios";
+import { useRouter } from "next/router";
+import { useCallback } from "react";
+import { Article } from "../interfaces/article";
+
+
 
 type ArticleSearchViewerType = {
   /** Style props */
@@ -13,13 +18,7 @@ type ArticleSearchViewerType = {
   filterValue: string;
 };
 
-interface Article {
-  name: string;
-  author: string;
-  publishDate: string;
-  link: string;
-  stage: string;
-};
+
 
 const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
   articleSearchViewerPosition,
@@ -54,7 +53,7 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
         'Access-Control-Allow-Origin': "*"
       }
     }).then((response) => {
-      if(!response) { 
+      if (!response) {
         throw new Error("Error collecting data");
       } else {
         return response.json();
@@ -69,17 +68,32 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
     });
   }, []);
 
+  const router = useRouter();
+
+  const handleViewArticle = (article: Article) => {
+    console.log("HELLO WORLD");
+    router.push({
+      pathname: "/ArticleScreen",
+      query: {
+        id: article._id,
+      }
+    });
+  };
+
   const mapDisplayArticles = () => {
-    return(
+    return (
       articles.map((value, index) => {
-          if(value.name.startsWith(filterValue)) {
-            return (<ArticleSearchElement articleName={value.name} author={value.author} publishDate={value.publishDate} key={index} />);
-          } else {
-            return null;
-          }
+        if (value.name.startsWith(filterValue)) {
+          return (
+            <div key={index} onClick={() => handleViewArticle(value)}>
+              <ArticleSearchElement articleName={value.name} author={value.author} publishDate={value.publishDate}/>
+            </div>);
+        } else {
+          return null;
+        }
       })
     );
-  };
+  }
 
 
   return (
@@ -92,7 +106,7 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
         searchTableHeaderTop="0px"
         searchTableHeaderLeft="0px"
       />
-      <div style={{display: "flex", flexDirection: "column", height: "500px", gap: "10px", paddingTop: "75px"}}>
+      <div style={{ display: "flex", flexDirection: "column", height: "500px", gap: "10px", paddingTop: "75px" }}>
         {mapDisplayArticles()}
       </div>
     </div>
