@@ -12,6 +12,7 @@ type ArticleModerationViewerType = {
   articles?: Article[];
   active?: number;
   setActive?: Function;
+  filter?: string;
 };
 
 const ArticleModerationViewer: NextPage<ArticleModerationViewerType> = ({
@@ -20,7 +21,8 @@ const ArticleModerationViewer: NextPage<ArticleModerationViewerType> = ({
   articleModerationViewerLeft,
   articles=[],
   active=-1,
-  setActive=(()=>console.log("No function given"))
+  setActive=(()=>console.log("No function given")),
+  filter=""
 }) => {
   const articleModerationViewerStyle: CSSProperties = useMemo(() => {
     return {
@@ -37,7 +39,12 @@ const ArticleModerationViewer: NextPage<ArticleModerationViewerType> = ({
 
   const moderationMap = () => {
     return(
-      articles.map((value, index) => {
+      articles.filter((item:Article) => {
+        if(filter == "") {
+          return true;
+        }
+        return item.name.startsWith(filter);
+      }).map((value, index) => {
         return (<div onClick={() => handleClickArticle(index)} key={index} style={{opacity: (index === active ? 0.5 : 1)}}>
           <StateActive stateActivePosition="relative" stateActiveFlexShrink="0" text={value.name} />
         </div>);
