@@ -12,6 +12,7 @@ type ArticleInfoType = {
   articleInfoTop?: CSSProperties["top"];
   articleInfoLeft?: CSSProperties["left"];
   articleInfoBackgroundColor?: CSSProperties["backgroundColor"];
+  article: Article;
 };
 
 const ArticleInfo: NextPage<ArticleInfoType> = ({
@@ -19,6 +20,14 @@ const ArticleInfo: NextPage<ArticleInfoType> = ({
   articleInfoTop,
   articleInfoLeft,
   articleInfoBackgroundColor,
+  article={
+    name: "...",
+    author: "...",
+    publishDate: "...",
+    link: "...",
+    stage: "...",
+    _id: "..."
+  }
 }) => {
   const articleInfoStyle: CSSProperties = useMemo(() => {
     return {
@@ -34,48 +43,7 @@ const ArticleInfo: NextPage<ArticleInfoType> = ({
     articleInfoBackgroundColor,
   ]);
 
-  const api_path = process.env.NEXT_PUBLIC_API_URL;
-  const [article, setArtcile] = useState<Article>({
-    name: "...",
-    author: "...",
-    publishDate: "...",
-    link: "...",
-    stage: "...",
-    _id: "..."
-  });
-
-  const router = useRouter();
-  const {id} = router.query;
-  console.log(id);
-  useEffect(() => {
-    console.log(id);
-    if(id) {
-      const apiUrl = api_path + "/article/" + id;
-      console.log(apiUrl);
-
-      fetch(apiUrl, {
-        method: "GET",
-        mode: "cors",
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': "*"
-        }
-      }).then((response) => {
-        if (!response) {
-          throw new Error("Error collecting data");
-        } else {
-          return response.json();
-        }
-      }).then((data) => {
-        setArtcile(data.existingArticle);
-        console.log(data);
-      }).catch((err) => {
-        console.log(err);
-        alert("Error collecting search data. Check logs");
-      }); 
-    }
-  }, []);
-  
+ 
 
   return (
     <div className={styles.articleInfo} style={articleInfoStyle}>

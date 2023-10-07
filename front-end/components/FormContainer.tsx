@@ -10,7 +10,16 @@ const FormContainer: NextPage = () => {
         articleInfoTop="0px"
         articleInfoLeft="55px"
         articleInfoBackgroundColor="rgba(134, 205, 130, 0.5)"
-      />
+        article={{
+          name: "...",
+          author: "...",
+          publishDate: "...",
+          link: "...",
+          stage: "...",
+          _id: "..."
+        }}      
+        />
+
     </div>
   );
 };

@@ -6,11 +6,13 @@ type StateActiveType = {
   /** Style props */
   stateActivePosition?: CSSProperties["position"];
   stateActiveFlexShrink?: CSSProperties["flexShrink"];
+  text: string;
 };
 
 const StateActive: NextPage<StateActiveType> = ({
   stateActivePosition,
   stateActiveFlexShrink,
+  text="..."
 }) => {
   const stateActiveStyle: CSSProperties = useMemo(() => {
     return {
@@ -22,7 +24,7 @@ const StateActive: NextPage<StateActiveType> = ({
   return (
     <div className={styles.stateactive} style={stateActiveStyle}>
       <div className={styles.operatingSystemConcepts}>
-        Operating System Concepts
+        {text}
       </div>
     </div>
   );

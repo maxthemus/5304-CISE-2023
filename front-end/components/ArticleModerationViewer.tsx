@@ -1,19 +1,26 @@
 import type { NextPage } from "next";
-import { useMemo, type CSSProperties } from "react";
+import { useMemo, type CSSProperties, useEffect, useState } from "react";
 import StateActive from "./StateActive";
 import styles from "./ArticleModerationViewer.module.css";
+import { Article } from "../interfaces/article";
 
 type ArticleModerationViewerType = {
   /** Style props */
   articleModerationViewerPosition?: CSSProperties["position"];
   articleModerationViewerTop?: CSSProperties["top"];
   articleModerationViewerLeft?: CSSProperties["left"];
+  articles?: Article[];
+  active?: number;
+  setActive?: Function;
 };
 
 const ArticleModerationViewer: NextPage<ArticleModerationViewerType> = ({
   articleModerationViewerPosition,
   articleModerationViewerTop,
   articleModerationViewerLeft,
+  articles=[],
+  active=-1,
+  setActive=(()=>console.log("No function given"))
 }) => {
   const articleModerationViewerStyle: CSSProperties = useMemo(() => {
     return {
@@ -26,13 +33,28 @@ const ArticleModerationViewer: NextPage<ArticleModerationViewerType> = ({
     articleModerationViewerTop,
     articleModerationViewerLeft,
   ]);
+ 
+
+  const moderationMap = () => {
+    return(
+      articles.map((value, index) => {
+        return (<div onClick={() => handleClickArticle(index)} key={index} style={{opacity: (index === active ? 0.5 : 1)}}>
+          <StateActive stateActivePosition="relative" stateActiveFlexShrink="0" text={value.name} />
+        </div>);
+      })
+    );
+  };
+
+  const handleClickArticle = (index:number) => {
+    setActive(index);
+  };
 
   return (
     <div
       className={styles.articleModerationViewer}
       style={articleModerationViewerStyle}
     >
-      <StateActive stateActivePosition="relative" stateActiveFlexShrink="0" />
+      {moderationMap()}
     </div>
   );
 };
