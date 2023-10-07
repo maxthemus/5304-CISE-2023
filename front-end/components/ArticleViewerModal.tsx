@@ -5,6 +5,7 @@ import AcceptButton from "./AcceptButton";
 import ArticleInfo from "./ArticleInfo";
 import styles from "./ArticleViewerModal.module.css";
 import { Article } from "../interfaces/article";
+import { useRouter } from "next/router";
 
 type ArticleViewerModalType = {
   /** Style props */
@@ -38,21 +39,60 @@ const ArticleViewerModal: NextPage<ArticleViewerModalType> = ({
     articleViewerModalTop,
     articleViewerModalLeft,
   ]);
+  const api_path = process.env.NEXT_PUBLIC_API_URL;
+  const router = useRouter();
+
+  // Function to reload the page
+  const reloadPage = () => {
+    router.reload();
+  };
+
+  const handleModerateArticle = (accepted: boolean) => {
+    console.log("Sending moderation msg");
+    const apiUrl = api_path + "/article/moderate"
+    fetch(apiUrl, {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': "*"
+      },
+      body: JSON.stringify({
+        id: article["_id"],
+        accepted: accepted
+      })
+    }).then((response) => {
+      return response.json();
+    }).then((data) => {
+      console.log(data); 
+      alert("Aritcle was " + (accepted ? "Accepted" : "Rejected"));
+      reloadPage();
+    }).catch((err) => {
+      console.log(err);
+    });
+  };
+  
+  
+  
 
   return (
     <div className={styles.articleViewerModal} style={articleViewerModalStyle}>
       <div className={styles.moderationButtons}>
-        <DeclineButton
-          declineButtonPosition="absolute"
-          declineButtonTop="0px"
-          declineButtonLeft="407px"
-        />
-        <AcceptButton
-          acceptButtonPosition="absolute"
-          acceptButtonTop="0px"
-          acceptButtonLeft="0px"
-        />
-      </div>
+        <div onClick={() => handleModerateArticle(false)}>
+          <DeclineButton
+            declineButtonPosition="absolute"
+            declineButtonTop="0px"
+            declineButtonLeft="407px"
+          />
+        </div>
+        <div onClick={() => handleModerateArticle(true)}>
+          <AcceptButton
+            acceptButtonPosition="absolute"
+            acceptButtonTop="0px"
+            acceptButtonLeft="0px"
+          />
+        </div>
+     </div>
       <ArticleInfo
         articleInfoPosition="absolute"
         articleInfoTop="65px"
