@@ -75,7 +75,7 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
     router.push({
       pathname: "/ArticleScreen",
       query: {
-        id: article._id
+        id: article._id,
       }
     });
   };
