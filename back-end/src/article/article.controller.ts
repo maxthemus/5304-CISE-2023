@@ -28,7 +28,28 @@ export class ArticleController {
         }
     }
 
-    @Post("/moderate")
+    @Post("/analyze")
+    async analyzeArticle(@Res() response, @Body() updateObj: updateArticleStageDto) {
+        try {
+                const getArticleInfo = await this.articleService.getArticle(updateObj.id);
+                const updatedArticleDTO:UpdateArticleDto = {
+                    stage: (updateObj.accepted ? "done" : "failed"),
+                }                
+
+                const updatedArticle = await this.articleService.updateArticle(updateObj.id, updatedArticleDTO);
+                return response.status(HttpStatus.OK).json({
+                    message: "Article has been analyze",
+                    updatedArticle
+                });
+        } catch(err) {
+            return response.status(HttpStatus.BAD_REQUEST).json({
+                error: "Server error"
+            });
+        }
+    }
+
+
+    @Post("/moderation")
     async moderateArticle(@Res() response, @Body() updateObj: updateArticleStageDto) {
         try {
                 const getArticleInfo = await this.articleService.getArticle(updateObj.id);
