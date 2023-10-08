@@ -61,7 +61,9 @@ const ArticleModerationViewer: NextPage<ArticleModerationViewerType> = ({
       className={styles.articleModerationViewer}
       style={articleModerationViewerStyle}
     >
-      {moderationMap()}
+      <div style={{overflow: "scroll"}}>
+        {moderationMap()}
+      </div>
     </div>
   );
 };

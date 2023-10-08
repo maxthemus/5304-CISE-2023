@@ -47,9 +47,9 @@ const ArticleViewerModal: NextPage<ArticleViewerModalType> = ({
     router.reload();
   };
 
-  const handleModerateArticle = (accepted: boolean) => {
+  const handleArticle = (accepted: boolean) => {
     console.log("Sending moderation msg");
-    const apiUrl = api_path + "/article/moderate"
+    const apiUrl = api_path + "/article/"+article.stage;
     fetch(apiUrl, {
       method: "POST",
       mode: "cors",
@@ -78,14 +78,14 @@ const ArticleViewerModal: NextPage<ArticleViewerModalType> = ({
   return (
     <div className={styles.articleViewerModal} style={articleViewerModalStyle}>
       <div className={styles.moderationButtons}>
-        <div onClick={() => handleModerateArticle(false)}>
+        <div onClick={() => handleArticle(false)}>
           <DeclineButton
             declineButtonPosition="absolute"
             declineButtonTop="0px"
             declineButtonLeft="407px"
           />
         </div>
-        <div onClick={() => handleModerateArticle(true)}>
+        <div onClick={() => handleArticle(true)}>
           <AcceptButton
             acceptButtonPosition="absolute"
             acceptButtonTop="0px"
