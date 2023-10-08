@@ -15,7 +15,7 @@ export class ArticleService {
     }
 
     async updateArticle(articleId: string, updateArticleDto: UpdateArticleDto): Promise<IArticle> {
-        const existingArticle = await this.articleModel.findById(articleId, updateArticleDto, { new: true});
+        const existingArticle = await this.articleModel.findOneAndUpdate({ _id: articleId}, updateArticleDto, { new: true });
         if(!existingArticle) {
             throw  new Error("NOT FOUND");
         }

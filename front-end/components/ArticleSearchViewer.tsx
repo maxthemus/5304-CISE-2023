@@ -106,7 +106,7 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
         searchTableHeaderTop="0px"
         searchTableHeaderLeft="0px"
       />
-      <div style={{ display: "flex", flexDirection: "column", height: "500px", gap: "10px", paddingTop: "75px" }}>
+      <div style={{ display: "flex", flexDirection: "column", height: "500px", gap: "10px", marginTop: "75px", overflow:"scroll"}}>
         {mapDisplayArticles()}
       </div>
     </div>
