@@ -22,6 +22,10 @@ interface Article {
   publishDate: string;
   link: string;
   stage: string;
+  upRating?: string;
+  downRating?: string;
+  claim?: string;
+  _id: string;
 };
 
 const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
@@ -30,6 +34,7 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
   articleSearchViewerLeft,
   filterValue
 }) => {
+  const router = useRouter();
   const api_path = process.env.NEXT_PUBLIC_API_URL;
   const [articles, setArticles] = useState<Article[]>([]);
 
@@ -72,11 +77,15 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
     });
   }, []);
 
-  const router = useRouter();
 
   const handleViewArticle = (article: Article) => {
     console.log("HELLO WORLD");
-    router.push("/ArticleScreen");
+    router.push({
+      pathname: "/ArticleScreen",
+      query: {
+        id: article._id,
+      },
+    });
   };
 
   const mapDisplayArticles = () => {
@@ -84,8 +93,8 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
       articles.map((value, index) => {
         if (value.name.startsWith(filterValue)) {
           return (
-            <div onClick={() => handleViewArticle(value)}>
-              <ArticleSearchElement articleName={value.name} author={value.author} publishDate={value.publishDate} key={index} />
+            <div key={index} onClick={() => handleViewArticle(value)}>
+              <ArticleSearchElement articleName={value.name} author={value.author} publishDate={value.publishDate} claim={value.claim} upRating={value.upRating} downRating={value.downRaiting} />
             </div>);
         } else {
           return null;
@@ -105,7 +114,7 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
         searchTableHeaderTop="0px"
         searchTableHeaderLeft="0px"
       />
-      <div style={{ display: "flex", flexDirection: "column", height: "500px", gap: "10px", paddingTop: "75px" }}>
+      <div style={{ display: "flex", flexDirection: "column", height: "500px", gap: "10px", paddingTop: "75px", overflow: "scroll"}}>
         {mapDisplayArticles()}
       </div>
     </div>
