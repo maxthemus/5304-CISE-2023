@@ -1,8 +1,11 @@
 export interface Article {
-  name: string;
-  author: string;
-  publishDate: string;
-  link: string;
-  stage: string;
-  _id: string;
+  name?: string;
+  link?: string;
+  stage?: string;
+  _id?: string;
+  publishDate?: string;
+  author?: string;
+  upRating?: string;
+  downRating?: string;
+  claim?: string;
 };

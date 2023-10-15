@@ -1,19 +1,11 @@
 import type { NextPage } from "next";
 import styles from "./ArticleSearchElement.module.css";
+import { Article } from "../interfaces/article";
 
-type ArticleSearchElementType = {
-  publishDate?: string;
-  author?: string;
-  articleName?: string;
-  upRating?: string;
-  downRating?: string;
-  claim?: string;
-};
-
-const ArticleSearchElement: NextPage<ArticleSearchElementType> = ({
+const ArticleSearchElement: NextPage<Article> = ({
   publishDate = "...",
   author = "...",
-  articleName = "...",
+  name = "...",
   upRating = "...",
   downRating = "...",
   claim = "..."
@@ -40,7 +32,7 @@ const ArticleSearchElement: NextPage<ArticleSearchElementType> = ({
         </div>
       </div>
       <div className={styles.nameBox}>
-        <div className={styles.operatingSystemConcepts}>{articleName}</div>
+        <div className={styles.operatingSystemConcepts}>{name}</div>
       </div>
     </button>
   );
