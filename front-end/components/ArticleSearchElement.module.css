@@ -4,18 +4,21 @@
 }
 .div {
   top: 45px;
-  left: 50px;
+  left: 23px;
   font-size: 25px;
   text-transform: capitalize;
   font-weight: 200;
   font-family: Inter;
   color: #000;
   text-align: left;
+  display: flex;
+  align-items: center;
+  width: 241px;
 }
 .dateBox {
   top: 0;
-  left: 960px;
-  width: 240px;
+  left: 663px;
+  width: 280px;
   height: 120px;
   overflow: hidden;
 }
@@ -29,13 +32,90 @@
   font-family: Inter;
   color: #000;
   text-align: left;
+  display: flex;
+  align-items: center;
+  width: 237px;
 }
 .authorBox {
   position: absolute;
   top: 0;
-  left: 548px;
+  left: 395px;
   background-color: rgba(44, 155, 128, 0.5);
-  width: 412px;
+  width: 268px;
+  height: 120px;
+  overflow: hidden;
+}
+.div1 {
+  position: absolute;
+  top: 45px;
+  left: 20px;
+  font-size: 25px;
+  text-transform: capitalize;
+  font-weight: 200;
+  font-family: Inter;
+  color: #000;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  width: 320px;
+}
+.claimBox,
+.upvotetext {
+  position: absolute;
+  top: 0;
+}
+.claimBox {
+  left: 943px;
+  background-color: rgba(44, 155, 128, 0.5);
+  width: 350px;
+  height: 120px;
+  overflow: hidden;
+}
+.upvotetext {
+  left: 0;
+  font-size: 25px;
+  text-transform: capitalize;
+  font-weight: 200;
+  font-family: Inter;
+  color: #000;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  width: 60px;
+}
+.thumbUpIcon {
+  position: absolute;
+  top: 0;
+  left: 63px;
+  width: 24px;
+  height: 24px;
+}
+.thumbDownIcon,
+.upvoteBox {
+  position: absolute;
+  top: 10px;
+  left: 9px;
+  width: 87px;
+  height: 30px;
+}
+.thumbDownIcon {
+  top: 6px;
+  left: 63px;
+  width: 24px;
+  height: 24px;
+}
+.downvoteBox,
+.ratingBox {
+  position: absolute;
+  top: 80px;
+  left: 9px;
+  width: 87px;
+  height: 30px;
+}
+.ratingBox {
+  top: 0;
+  left: 1293px;
+  width: 107px;
   height: 120px;
   overflow: hidden;
 }
@@ -49,12 +129,15 @@
   font-family: Inter;
   color: #000;
   text-align: left;
+  display: flex;
+  align-items: center;
+  width: 360px;
 }
 .nameBox {
   position: absolute;
   top: 0;
   left: 0;
-  width: 548px;
+  width: 395px;
   height: 120px;
   overflow: hidden;
 }
@@ -63,8 +146,8 @@
   border: 0;
   padding: 0;
   background-color: #86cd82;
-  width: 1200px;
+  width: 1400px;
   height: 120px;
   overflow: hidden;
-  position: relative;
+  position: relative; 
 }

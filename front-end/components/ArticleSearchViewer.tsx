@@ -9,7 +9,6 @@ import { useCallback } from "react";
 import { Article } from "../interfaces/article";
 
 
-
 type ArticleSearchViewerType = {
   /** Style props */
   articleSearchViewerPosition?: CSSProperties["position"];
