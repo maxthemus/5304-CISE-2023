@@ -1,5 +1,5 @@
 export interface Article {
-  name?: string;
+  name: string;
   link?: string;
   stage?: string;
   _id?: string;

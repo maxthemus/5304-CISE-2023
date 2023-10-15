@@ -81,11 +81,11 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
 
   const mapDisplayArticles = () => {
     return (
-      articles.map((value, index) => {
+      articles.map((value:Article, index) => {
         if (value.name.startsWith(filterValue)) {
           return (
             <div key={index} onClick={() => handleViewArticle(value)}>
-              <ArticleSearchElement articleName={value.name} author={value.author} publishDate={value.publishDate}/>
+              <ArticleSearchElement name={value.name} author={value.author} publishDate={value.publishDate} upRating={value.upRating} downRating={value.downRating} claim={value.claim} />
             </div>);
         } else {
           return null;
