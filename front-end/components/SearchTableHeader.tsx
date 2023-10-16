@@ -24,17 +24,20 @@ const SearchTableHeader: NextPage<SearchTableHeaderType> = ({
 
   return (
     <div className={styles.searchTableHeader} style={searchTableHeaderStyle}>
-      <div className={styles.viewColumnName}>
-        <div className={styles.frame} />
+      <div className={styles.viewColumnArticlename}>
         <div className={styles.articleName}>Article Name</div>
       </div>
       <div className={styles.viewColumnAuthor}>
-        <div className={styles.frame1} />
         <div className={styles.author}>Author</div>
       </div>
       <div className={styles.viewColumnPublisheddate}>
-        <div className={styles.frame} />
         <div className={styles.publishedDate}>Published Date</div>
+      </div>
+      <div className={styles.viewColumnClaim}>
+        <div className={styles.author}>Claim</div>
+      </div>
+      <div className={styles.viewColumnRating}>
+        <div className={styles.publishedDate}>Rating</div>
       </div>
     </div>
   );

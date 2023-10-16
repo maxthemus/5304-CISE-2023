@@ -6,4 +6,7 @@ export interface IArticle extends Document {
     readonly publishDate: string;
     readonly link : string;
     readonly stage: string;
+    readonly upRating: number;
+    readonly downRating: number;
+    readonly claim: string;
 }

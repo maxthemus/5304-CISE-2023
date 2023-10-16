@@ -5,13 +5,14 @@ import { ArticleService } from "./article.service";
 import { HttpAdapterHost } from '@nestjs/core';
 import { response } from 'express';
 import { updateArticleStageDto } from './update-article-stage.dto';
+import { updateArticleRatingDto } from './update-article-rating.dto';
 
 @Controller('article')
 export class ArticleController {
     constructor(private readonly articleService: ArticleService) {}
 
     @Post()
-    async createArticle(@Res() response, @Body() createArticleDto: CreateArticleDto) {
+    async createArticle(@Res() response, @Body() createArticleDto: Partial<CreateArticleDto>) {
         try {
             const newArticle = await this.articleService.createArticle(createArticleDto);
 
@@ -68,6 +69,28 @@ export class ArticleController {
             });
         }
     }
+
+    @Post("/rate")
+    async rateArticle(@Res() response, @Body() updateObj: updateArticleRatingDto) {
+        try {
+            const getArticleInfo = await this.articleService.getArticle(updateObj.id);
+            const updateArticleDTO:UpdateArticleDto = {
+                upRating:(updateObj.upRating ? getArticleInfo.upRating + 1 : getArticleInfo.upRating),
+                downRating:(!updateObj.upRating ? getArticleInfo.downRating + 1: getArticleInfo.downRating)
+            };
+
+            const updatedArticle = await this.articleService.updateArticle(updateObj.id, updateArticleDTO);
+            return response.status(HttpStatus.OK).json({
+                message: "Article has been rated",
+                updatedArticle
+            });
+        } catch(err) {
+            return response.status(HttpStatus.BAD_REQUEST).json({
+                error: "Server error, unable to update article rating"
+            });
+        }
+    }
+
 
     @Put('/:id')
     async updateArticle(@Res() response, @Param('id') articleId: string,

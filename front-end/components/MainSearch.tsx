@@ -39,7 +39,7 @@ const MainSearch: NextPage<MainSearchType> = ({
       <ArticleSearchViewer
         articleSearchViewerPosition="absolute"
         articleSearchViewerTop="233px"
-        articleSearchViewerLeft="100px"
+        articleSearchViewerLeft="0px"
         filterValue={searchFilter}
       />
     </div>

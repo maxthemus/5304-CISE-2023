@@ -16,6 +16,15 @@ export class Article {
 
     @Prop()
     stage: string; //can be "[moderation, analyze, done]"
+
+    @Prop()
+    upRating: number;
+
+    @Prop()
+    downRating: number;
+
+    @Prop()
+    claim: string;
 }
 
 export const ArticleSchema = SchemaFactory.createForClass(Article);
