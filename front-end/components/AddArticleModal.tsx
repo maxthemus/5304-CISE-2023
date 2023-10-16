@@ -57,7 +57,7 @@ const AddArticleModal: NextPage<AddArticleModalType> = ({
         headers: {
           'Content-Type': "application/json",
         },
-        body: JSON.stringify({...formData, stage: "moderation"})
+        body: JSON.stringify({...formData, stage: "moderation", upRating: 0, downRating: 0, claim: ""})
       };
 
       const response = await fetch(apiUrl, requestOptions);

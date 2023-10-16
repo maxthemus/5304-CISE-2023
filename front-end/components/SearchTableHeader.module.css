@@ -1,50 +1,26 @@
-.frame {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: transparent;
-}
 .articleName {
   position: absolute;
-  width: 37.31%;
+  width: 100%;
   top: 20%;
-  left: 31.39%;
+  left: 0;
   text-transform: capitalize;
   font-weight: 200;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.viewColumnName {
-  height: 100%;
-  width: 45.67%;
-  top: 0;
-  right: 54.33%;
-  bottom: 0;
-  left: 0;
-}
-.author,
-.frame1,
-.viewColumnName {
+.viewColumnArticlename {
   position: absolute;
-}
-.frame1 {
-  height: 100%;
-  width: 100%;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
-  background-color: rgba(44, 155, 128, 0.5);
+  width: 395px;
+  height: 50px;
 }
 .author {
-  width: 41.91%;
+  position: absolute;
+  width: 100.07%;
   top: 20%;
-  left: 29.13%;
+  left: 0;
   text-transform: capitalize;
   font-weight: 200;
   display: flex;
@@ -53,12 +29,11 @@
 }
 .viewColumnAuthor {
   position: absolute;
-  height: 100%;
-  width: 34.33%;
   top: 0;
-  right: 20%;
-  bottom: 0;
-  left: 45.67%;
+  left: 395px;
+  background-color: rgba(44, 155, 128, 0.5);
+  width: 268px;
+  height: 50px;
 }
 .publishedDate {
   position: absolute;
@@ -73,16 +48,33 @@
 }
 .viewColumnPublisheddate {
   position: absolute;
+  top: 0;
+  left: 663px;
+  background-color: transparent;
+  width: 280px;
+  height: 50px;
+}
+.viewColumnClaim {
+  position: absolute;
+  top: 0;
+  left: 943px;
+  background-color: rgba(44, 155, 128, 0.5);
+  width: 350px;
+  height: 50px;
+}
+.viewColumnRating {
+  position: absolute;
   height: 100%;
-  width: 20%;
+  width: 7.71%;
   top: 0;
   right: 0;
   bottom: 0;
-  left: 80%;
+  left: 92.29%;
+  background-color: transparent;
 }
 .searchTableHeader {
   background-color: #86cd82;
-  width: 1200px;
+  width: 1400px;
   height: 50px;
   text-align: center;
   font-size: 25px;
