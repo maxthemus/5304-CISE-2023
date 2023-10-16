@@ -5,7 +5,7 @@ export interface Article {
   _id?: string;
   publishDate?: string;
   author?: string;
-  upRating?: string;
-  downRating?: string;
+  upRating?: number;
+  downRating?: number;
   claim?: string;
 };

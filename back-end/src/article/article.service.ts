@@ -9,7 +9,7 @@ import { UpdateArticleDto } from "./update-article.dto";
 export class ArticleService {
     constructor(@InjectModel("Article") private articleModel: Model<IArticle>) {}
 
-    async createArticle(CreateArticleDto: CreateArticleDto): Promise<IArticle> {
+    async createArticle(CreateArticleDto: Partial<CreateArticleDto>): Promise<IArticle> {
         const createdArticle = await new this.articleModel(CreateArticleDto);
         return createdArticle.save();
     }
