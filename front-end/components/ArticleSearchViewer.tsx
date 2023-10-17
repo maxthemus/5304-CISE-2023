@@ -15,6 +15,8 @@ type ArticleSearchViewerType = {
   articleSearchViewerTop?: CSSProperties["top"];
   articleSearchViewerLeft?: CSSProperties["left"];
   filterValue: string;
+  SEFilter: string;
+  updateSETypes: Function;
 };
 
 
@@ -23,7 +25,9 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
   articleSearchViewerPosition,
   articleSearchViewerTop,
   articleSearchViewerLeft,
-  filterValue
+  filterValue,
+  SEFilter,
+  updateSETypes
 }) => {
   const api_path = process.env.NEXT_PUBLIC_API_URL;
   const [articles, setArticles] = useState<Article[]>([]);
@@ -61,11 +65,31 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
       console.log(data);
       setArticles(data.outputArticles);
       console.log(data);
+
+      //Now we need to update the SE filters
+      updateSEFilters(data.outputArticles); 
+
     }).catch((err) => {
       console.log(err);
       alert("Error collecting search data. Check logs");
     });
   }, []);
+
+  //Updating the SE filters
+  
+  const updateSEFilters = (articles: Article[]) => {
+    const uniquePractices: string[] = ["ALL"];
+
+    for(const article of articles) {
+      const addPractice = uniquePractices.filter((value) => value === article.practice);
+      if(addPractice.length === 0) {
+        uniquePractices.push(article.practice);
+      }
+    }
+    console.log(uniquePractices);
+    updateSETypes(uniquePractices);
+   };
+
 
   const router = useRouter();
 
@@ -83,13 +107,14 @@ const ArticleSearchViewer: NextPage<ArticleSearchViewerType> = ({
     return (
       articles.map((value:Article, index) => {
         if (value.name.startsWith(filterValue)) {
-          return (
-            <div key={index} onClick={() => handleViewArticle(value)}>
-              <ArticleSearchElement name={value.name} author={value.author} publishDate={value.publishDate} upRating={value.upRating} downRating={value.downRating} claim={value.claim} />
-            </div>);
-        } else {
-          return null;
-        }
+          if (SEFilter === "ALL" || SEFilter === value.practice) {
+            return (
+              <div key={index} onClick={() => handleViewArticle(value)}>
+                <ArticleSearchElement name={value.name} author={value.author} publishDate={value.publishDate} upRating={value.upRating} downRating={value.downRating} claim={value.claim} practice={value.practice} />
+              </div>);
+          }
+        } 
+        return null;
       })
     );
   }

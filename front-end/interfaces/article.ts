@@ -8,4 +8,5 @@ export interface Article {
   upRating?: number;
   downRating?: number;
   claim?: string;
+  practice: string;
 };

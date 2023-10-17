@@ -25,6 +25,9 @@ export class Article {
 
     @Prop()
     claim: string;
+
+    @Prop()
+    practice: string;
 }
 
 export const ArticleSchema = SchemaFactory.createForClass(Article);
