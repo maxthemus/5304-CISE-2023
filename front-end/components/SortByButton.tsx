@@ -33,7 +33,7 @@ const SortByButton: NextPage<SortByButtonType> = ({
 
     useEffect(() => {
       setCurrentFilter(currentSEFIlter);
-    }, [currentFilter]);
+    }, [currentSEFIlter]);
     
     const handleClickFilter = (value:string) => {
       setCurrentFilter(value);
@@ -45,7 +45,7 @@ const SortByButton: NextPage<SortByButtonType> = ({
     const mapSEFilters = () => {
       return SEFilters.filter((value) => value !== currentFilter).map((value, index) => { 
         return (
-          <div onClick={() => handleClickFilter(value)} style={{ backgroundColor: "green", width: "215px"}} >
+          <div key={index} onClick={() => handleClickFilter(value)} style={{ backgroundColor: "green", width: "215px"}} >
             <p>{value}</p>
           </div>
         )  
