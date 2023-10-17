@@ -25,7 +25,8 @@ const ArticleViewerModal: NextPage<ArticleViewerModalType> = ({
     publishDate: "...",
     link: "...",
     stage: "...",
-    _id: "..."
+    _id: "...",
+    practice: "..."
   }
 }) => {
   const articleViewerModalStyle: CSSProperties = useMemo(() => {

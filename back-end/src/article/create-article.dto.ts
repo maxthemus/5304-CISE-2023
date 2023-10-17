@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber, IsOptional, IsString, MAX, MaxLength, isString } from "class-validator";
+import { IsNotEmpty, IsNumber, IsOptional, IsString, MAX, Max, MaxLength, isString } from "class-validator";
 import { Article } from "./article.schema";
 import { Optional } from "@nestjs/common";
 
@@ -39,6 +39,11 @@ export class CreateArticleDto {
     @IsString()
     @IsOptional()
     readonly claim: string;
+
+    @IsString()
+    @MaxLength(30)
+    @IsNotEmpty()
+    readonly practice: string;
 
     constructor(partial: Partial<CreateArticleDto>) {
         this.upRating = partial.upRating || 0;

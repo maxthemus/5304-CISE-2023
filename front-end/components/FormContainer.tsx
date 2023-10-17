@@ -14,7 +14,8 @@ const FormContainer: NextPage = () => {
     publishDate: "...",
     link: "...",
     stage: "...",
-    _id: "..."
+    _id: "...",
+    practice: "..."
   });
 
   const router = useRouter();

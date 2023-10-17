@@ -76,7 +76,8 @@ const MainModerate: NextPage<MainModerateType> = ({
           publishDate: "...",
           link: "...",
           stage: "...",
-          _id: "..."
+          _id: "...",
+          practice: "..."
         }}
       />
     </div>
