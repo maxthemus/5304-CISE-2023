@@ -28,6 +28,8 @@ const MainSearch: NextPage<MainSearchType> = ({
   }, [mainSearchPosition, mainSearchTop, mainSearchLeft]);
 
   const [searchFilter, setSearchFilter] = useState<string>("");
+  const [SEfilters, setSEfilters] = useState(["ALL", "TEST"]);
+  const [currentSEfilter, setCurrentSEFilter] = useState("ALL");
 
   const updateFilter = (value: string) => {
     setSearchFilter(value);
@@ -35,12 +37,14 @@ const MainSearch: NextPage<MainSearchType> = ({
 
   return (
     <div className={styles.mainSearch} style={mainSearchStyle}>
-      <SearchHeaderContainer imageDimensions="/searchbar2.svg" updateFilter={updateFilter} />
+      <SearchHeaderContainer imageDimensions="/searchbar2.svg" updateFilter={updateFilter} updateSEFilter={setCurrentSEFilter} currentSEFIlter={currentSEfilter} SEFilters={SEfilters} />
       <ArticleSearchViewer
         articleSearchViewerPosition="absolute"
         articleSearchViewerTop="233px"
         articleSearchViewerLeft="0px"
         filterValue={searchFilter}
+        SEFilter={currentSEfilter}
+        updateSETypes={setSEfilters}
       />
     </div>
   );

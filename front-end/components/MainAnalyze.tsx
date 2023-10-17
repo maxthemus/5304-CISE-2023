@@ -81,7 +81,8 @@ const MainAnalyze: NextPage<MainAnalyzeType> = ({
           publishDate: "...",
           link: "...",
           stage: "...",
-          _id: "..."
+          _id: "...",
+          practice: "..."
         }}
       />
     </div>

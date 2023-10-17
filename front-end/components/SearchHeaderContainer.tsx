@@ -6,11 +6,19 @@ import styles from "./SearchHeaderContainer.module.css";
 type SearchHeaderContainerType = {
   imageDimensions?: string;
   updateFilter: Function;
+
+  updateSEFilter: Function;
+  currentSEFIlter?: string;
+  SEFilters ?: Array<string>;
 };
 
 const SearchHeaderContainer: NextPage<SearchHeaderContainerType> = ({
   imageDimensions,
-  updateFilter
+  updateFilter,
+  updateSEFilter,
+  currentSEFIlter,
+  SEFilters,
+
 }) => {
   return (
     <div className={styles.searchHeader}>
@@ -24,12 +32,18 @@ const SearchHeaderContainer: NextPage<SearchHeaderContainerType> = ({
         sizeSmallIconLeft="0px"
         updateFilter={updateFilter}
       />
-      <SortByButton
-        sortByButtonPosition="absolute"
-        sortByButtonTop="154px"
-        sortByButtonLeft="224px"
-      />
-    </div>
+      <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", marginTop: "70px"}}>
+        <p style={{ fontSize: "20px"}}>Sort by SE practice</p>
+        <SortByButton
+          sortByButtonPosition="relative"
+          sortByButtonTop="10px"
+          sortByButtonLeft="10px"
+          currentSEFIlter={currentSEFIlter}
+          updateSEFilter={updateSEFilter}
+          SEFilters={SEFilters}
+        />
+      </div>
+   </div>
   );
 };
 
