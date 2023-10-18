@@ -28,6 +28,10 @@ const AddArticleScreen: NextPage = () => {
     router.push("/AddArticleScreen");
   }, [router]);
 
+  const onModerationButtonContainerClick = useCallback(() => {
+    router.push("/ModerationScreen");
+  }, [router]);
+
   return (
     <div className={styles.addArticleScreen}>
       <NavBar
@@ -39,6 +43,7 @@ const AddArticleScreen: NextPage = () => {
         onModerateButtonContainerClick={onModerateButtonContainerClick}
         onAnalyseButtonContainerClick={onAnalyseButtonContainerClick}
         onAddButtonContainerClick={onAddButtonContainerClick}
+        onModerationButtonContainerClick={onModerationButtonContainerClick}
       />
       <AddArticleModal
         addArticleModalPosition="absolute"

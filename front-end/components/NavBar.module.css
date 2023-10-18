@@ -15,6 +15,18 @@
   overflow: hidden;
   cursor: pointer;
 }
+
+.moderationButton {
+  position: absolute;
+  top: 5px;
+  left: 1180px;
+  background-color: #72a276;
+  width: 215px;
+  height: 40px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
 .navbar {
   background-color: #d9d9d9;
   width: 1600px;

@@ -28,6 +28,10 @@ const SearchScreen: NextPage = () => {
     router.push("/AddArticleScreen");
   }, [router]);
 
+  const onModerationButtonContainerClick = useCallback(() => {
+    router.push("/ModerationScreen");
+  }, [router]);
+
   return (
     <div className={styles.searchScreen}>
       <MainSearch
@@ -45,6 +49,7 @@ const SearchScreen: NextPage = () => {
         onModerateButtonContainerClick={onModerateButtonContainerClick}
         onAnalyseButtonContainerClick={onAnalyseButtonContainerClick}
         onAddButtonContainerClick={onAddButtonContainerClick}
+        onModerationButtonContainerClick={onModerationButtonContainerClick}
       />
     </div>
   );
