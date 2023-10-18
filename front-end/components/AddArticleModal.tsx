@@ -8,6 +8,7 @@ interface FormData {
   author: string;
   publishDate: string;
   link: string;
+  practice: string;
 }
 
 
@@ -38,6 +39,7 @@ const AddArticleModal: NextPage<AddArticleModalType> = ({
     author: '',
     publishDate: '',
     link: 'n/a',
+    practice: ''
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -115,6 +117,17 @@ const AddArticleModal: NextPage<AddArticleModalType> = ({
             id="link"
             name="link"
             value={formData.link}
+            onChange={handleChange}
+          />
+        </div> 
+
+         <div>
+          <label htmlFor="practice">Software Engineering Practice:</label>
+          <input
+            type="text"
+            id="practice"
+            name="practice"
+            value={formData.practice}
             onChange={handleChange}
           />
         </div> 
