@@ -50,10 +50,9 @@ const ArticleInfo: NextPage<ArticleInfoType> = ({
     return (
       claimArray.map((value, index) => {
         return (
-          <div style={{marginTop: "10px"}}>
+          <div key={index} style={{marginTop: "10px"}}>
             <InformationDisplayer
               text={value}
-              key={index}
               informationDisplayerPosition="relative"
               informationDisplayerTop="0px"
               informationDisplayerLeft="0px"
