@@ -16,6 +16,7 @@ type NavBarType = {
   onModerateButtonContainerClick?: () => void;
   onAnalyseButtonContainerClick?: () => void;
   onAddButtonContainerClick?: () => void;
+  onModerationButtonContainerClick?: () => void;
 };
 
 const NavBar: NextPage<NavBarType> = ({
@@ -27,6 +28,7 @@ const NavBar: NextPage<NavBarType> = ({
   onModerateButtonContainerClick,
   onAnalyseButtonContainerClick,
   onAddButtonContainerClick,
+  onModerationButtonContainerClick
 }) => {
   const navBarStyle: CSSProperties = useMemo(() => {
     return {
@@ -53,6 +55,10 @@ const NavBar: NextPage<NavBarType> = ({
         onModerateButtonContainerClick={onModerateButtonContainerClick}
         onAnalyseButtonContainerClick={onAnalyseButtonContainerClick}
       />
+      
+      <div className={styles.moderationButton} onClick={onModerationButtonContainerClick}>
+        <div className={styles.addArticle}>Article Moderation</div>
+      </div>
       <div className={styles.addButton} onClick={onAddButtonContainerClick}>
         <div className={styles.addArticle}>Add Article</div>
       </div>

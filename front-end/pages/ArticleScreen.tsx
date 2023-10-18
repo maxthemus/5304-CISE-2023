@@ -30,6 +30,10 @@ const ArticleScreen: NextPage = () => {
     router.push("/AddArticleScreen");
   }, [router]);
 
+  const onModerationButtonContainerClick = useCallback(() => {
+    router.push("/ModerationScreen");
+  }, [router]);
+
   return (
     <div className={styles.articleScreen}>
       <NavBar

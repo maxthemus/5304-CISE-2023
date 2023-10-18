@@ -28,6 +28,10 @@ const AnalyzeScreen: NextPage = () => {
     router.push("/AddArticleScreen");
   }, [router]);
 
+  const onModerationButtonContainerClick = useCallback(() => {
+    router.push("/ModerationScreen");
+  }, [router]);
+
   return (
     <div className={styles.analyzeScreen}>
       <NavBar
@@ -39,6 +43,7 @@ const AnalyzeScreen: NextPage = () => {
         onModerateButtonContainerClick={onModerateButtonContainerClick}
         onAnalyseButtonContainerClick={onAnalyseButtonContainerClick}
         onAddButtonContainerClick={onAddButtonContainerClick}
+        onModerationButtonContainerClick={onModerationButtonContainerClick}
       />
       <MainAnalyze
         searchBar="/searchbar3.svg"
