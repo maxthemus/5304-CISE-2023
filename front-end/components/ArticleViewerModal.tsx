@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { useMemo, type CSSProperties } from "react";
+import { useMemo, type CSSProperties, useState } from "react";
 import DeclineButton from "./DeclineButton";
 import AcceptButton from "./AcceptButton";
 import ArticleInfo from "./ArticleInfo";
@@ -51,6 +51,33 @@ const ArticleViewerModal: NextPage<ArticleViewerModalType> = ({
   const handleArticle = (accepted: boolean) => {
     console.log("Sending moderation msg");
     const apiUrl = api_path + "/article/"+article.stage;
+
+    if(article.stage === "analyze") {
+      //Add pop up to add claims to the article 
+      const claims = prompt("Please Add Claims for the article, as CSC. example = TDD,Design Patterns");
+
+      //Then send the article 
+      fetch(api_path + "/article/" + article._id, {
+        method: "PUT",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+          claim: claims
+        }),
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Data");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
     fetch(apiUrl, {
       method: "POST",
       mode: "cors",

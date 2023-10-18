@@ -28,7 +28,7 @@ const MainSearch: NextPage<MainSearchType> = ({
   }, [mainSearchPosition, mainSearchTop, mainSearchLeft]);
 
   const [searchFilter, setSearchFilter] = useState<string>("");
-  const [SEfilters, setSEfilters] = useState(["ALL", "TEST"]);
+  const [SEfilters, setSEfilters] = useState(["ALL"]);
   const [currentSEfilter, setCurrentSEFilter] = useState("ALL");
 
   const updateFilter = (value: string) => {

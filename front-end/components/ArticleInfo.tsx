@@ -26,7 +26,9 @@ const ArticleInfo: NextPage<ArticleInfoType> = ({
     publishDate: "...",
     link: "...",
     stage: "...",
-    _id: "..."
+    _id: "...",
+    practice: "...",
+    claim: "..."
   }
 }) => {
   const articleInfoStyle: CSSProperties = useMemo(() => {
@@ -43,6 +45,24 @@ const ArticleInfo: NextPage<ArticleInfoType> = ({
     articleInfoBackgroundColor,
   ]);
 
+  const mapClaims = (claims: string) => {
+    const claimArray = claims.split(",");
+    return (
+      claimArray.map((value, index) => {
+        return (
+          <div key={index} style={{marginTop: "10px"}}>
+            <InformationDisplayer
+              text={value}
+              informationDisplayerPosition="relative"
+              informationDisplayerTop="0px"
+              informationDisplayerLeft="0px"
+            />
+          </div>
+        );
+      })
+    );
+  }
+
  
 
   return (
@@ -52,8 +72,8 @@ const ArticleInfo: NextPage<ArticleInfoType> = ({
           <div className={styles.articlePublishDate}>Article Name:</div>
           <InformationDisplayer
             text={article.name}
-            informationDisplayerPosition="absolute"
-            informationDisplayerTop="24px"
+            informationDisplayerPosition="relative"
+            informationDisplayerTop="0px"
             informationDisplayerLeft="0px"
           />
         </div>
@@ -61,8 +81,8 @@ const ArticleInfo: NextPage<ArticleInfoType> = ({
           <div className={styles.articlePublishDate}>Article Author:</div>
           <InformationDisplayer
             text={article.author}
-            informationDisplayerPosition="absolute"
-            informationDisplayerTop="24px"
+            informationDisplayerPosition="relative"
+            informationDisplayerTop="0px"
             informationDisplayerLeft="0px"
           />
         </div>
@@ -70,8 +90,8 @@ const ArticleInfo: NextPage<ArticleInfoType> = ({
           <div className={styles.articlePublishDate}>Article Publish Date:</div>
           <InformationDisplayer
             text={article.publishDate}
-            informationDisplayerPosition="absolute"
-            informationDisplayerTop="24px"
+            informationDisplayerPosition="relative"
+            informationDisplayerTop="0px"
             informationDisplayerLeft="0px"
           />
         </div>
@@ -79,10 +99,29 @@ const ArticleInfo: NextPage<ArticleInfoType> = ({
           <div className={styles.articlePublishDate}>Article Link:</div>
           <InformationDisplayer
             text={article.link}
-            informationDisplayerPosition="absolute"
-            informationDisplayerTop="24px"
+            informationDisplayerPosition="relative"
+            informationDisplayerTop="0px"
             informationDisplayerLeft="0px"
           />
+        </div>
+
+        <div className={styles.articleName}>
+          <div className={styles.articlePublishDate}>
+            Software Engineering Practices:
+          </div>
+          <InformationDisplayer
+            text={article.practice}
+            informationDisplayerPosition="relative"
+            informationDisplayerTop="0px"
+            informationDisplayerLeft="0px"
+          />
+        </div>
+
+        <div className={styles.articleName}>
+          <div className={styles.articlePublishDate}>Article claims:</div>
+          {
+            mapClaims(article.claim || "")
+          } 
         </div>
       </div>
     </div>
