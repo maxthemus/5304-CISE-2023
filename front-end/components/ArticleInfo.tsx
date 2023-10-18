@@ -49,14 +49,15 @@ const ArticleInfo: NextPage<ArticleInfoType> = ({
     const claimArray = claims.split(",");
     return (
       claimArray.map((value, index) => {
-        return(
-          <InformationDisplayer
-            text={value}
-            key={index}
-            informationDisplayerPosition="relative"
-            informationDisplayerTop="0px"
-            informationDisplayerLeft="0px"
-          /> 
+        return (
+          <div key={index} style={{marginTop: "10px"}}>
+            <InformationDisplayer
+              text={value}
+              informationDisplayerPosition="relative"
+              informationDisplayerTop="0px"
+              informationDisplayerLeft="0px"
+            />
+          </div>
         );
       })
     );
